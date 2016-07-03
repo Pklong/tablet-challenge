@@ -1,0 +1,17 @@
+{
+  "bookmark1": {
+    "title": "Tablet",
+    "url": "https://www.tablethotels.com/",
+    "id": 1
+  },
+  "bookmark2": {
+    "title": "Expedia",
+    "url": "https://www.expedia.com/",
+    "id": 2
+  },
+  "bookmark3": {
+    "title": "Google",
+    "url": "https://www.google.com/",
+    "id": 3
+  }
+}

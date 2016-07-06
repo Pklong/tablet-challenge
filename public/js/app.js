@@ -20,16 +20,38 @@
     request.send(requestParams.data);
   }
 
+  function createNewBookmarkNotification(bookmarkTitle) {
+    const notification = document.getElementById('bookmark-notification');
+    notification.innerHTML = `Bookmark "${bookmarkTitle}" created`;
+
+    clearTimeout(this.clearNotificationTimeout);
+    this.clearNotificationTimeout = setTimeout(() => {
+      notification.innerHTML = '';
+    }, 3000);
+  }
+
+  function deleteBookmarkNotification(bookmarkTitle) {
+    const notification = document.getElementById('bookmark-notification');
+    notification.innerHTML = `Bookmark "${bookmarkTitle}" deleted`;
+
+    clearTimeout(this.clearNotificationTimeout);
+    this.clearNotificationTimeout = setTimeout(() => {
+      notification.innerHTML = '';
+    }, 3000);
+  }
+
   function removeBookmark(bookmarkId) {
-    const bookmark = document.querySelector(`[data-id=${bookmarkId}]`);
+    const bookmark = document.querySelector(`[data-id="${bookmarkId}"]`);
     bookmark.parentNode.removeChild(bookmark);
   }
   function deleteBookmark(bookmarkId) {
     ajax({
       method: 'DELETE',
       url: `http://localhost:3000/bookmarks/${bookmarkId}`,
-      success: (bmId) => {
-        removeBookmark(bmId);
+      success: (bookmark) => {
+        const bm = JSON.parse(bookmark);
+        removeBookmark(bm.id);
+        deleteBookmarkNotification(bm.title);
       },
       error: () => {
         console.error('Failure removing bookmark');
@@ -98,7 +120,9 @@
       data: JSON.stringify(newBookmark),
       success: (bm) => {
         clearInputFields();
-        addBookmark(JSON.parse(bm));
+        const bookmark = JSON.parse(bm);
+        addBookmark(bookmark);
+        createNewBookmarkNotification(bookmark.title);
       },
       error: () => {
         console.error('Failure adding bookmark');
@@ -128,6 +152,8 @@
     fetchBookmarks();
     bindFormSubmission();
   }
+
+
 
   document.addEventListener('DOMContentLoaded', initialize);
 })();

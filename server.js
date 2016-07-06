@@ -45,12 +45,13 @@ app.post('/bookmarks', (req, res) => {
 
 app.delete('/bookmarks/:bookmarkId', (req, res) => {
   const bookmarkToRemove = `bookmark${req.params.bookmarkId}`;
+  const bookmark = bookmarksFile[bookmarkToRemove];
   delete bookmarksFile[bookmarkToRemove];
 
   const file = JSON.stringify(bookmarksFile, null, 2);
   fs.writeFile(bookmarksFileName, file, (err) => {
     if (err) return console.error(err);
-    return res.end(JSON.stringify(req.params.bookmarkId));
+    return res.end(JSON.stringify(bookmark));
   });
 });
 

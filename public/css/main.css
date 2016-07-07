@@ -25,11 +25,52 @@ input[type="submit"] {
 }
 
 body {
-  background-color: #ccc;
+  background-color: #eee;
+  font-family: arial;
+}
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+}
+
+#bookmark-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+
+
+}
+
+.bookmark {
+  height: 80px;
+  width: 80px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #444;
+  background: #fff;
+  padding: 10px;
+  text-align: center;
+  margin: 10px;
+  overflow: hidden;
+}
+
+a:hover {
+  color: #000;
 }
 
 .delete-btn {
-  background-color: #f00;
-  height: 20px;
-  width: 20px;
+  display: block;
+  margin: 10px auto;
+  height: 35px;
+  width: 35px;
+  background: url('../assets/trash.png');
+  background-size: cover;
+}
+
+.delete-btn:hover {
+  background: url('../assets/trash_hover.png');
+  background-size: cover;
+
 }

@@ -78,8 +78,9 @@
     const tag = document.createElement('li');
     const title = bookmark.title;
     const url = bookmark.url;
-    tag.innerHTML = `<a href='${url}'>${title}</a>`;
     tag.dataset.id = bookmark.id;
+    tag.classList.add('bookmark');
+    tag.innerHTML = `<a href='${url}'>${title}</a>`;
     createDeleteBtn(tag);
     document.getElementById('bookmark-container').appendChild(tag);
   }
@@ -152,8 +153,6 @@
     fetchBookmarks();
     bindFormSubmission();
   }
-
-
 
   document.addEventListener('DOMContentLoaded', initialize);
 })();

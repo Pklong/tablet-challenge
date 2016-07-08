@@ -32,20 +32,58 @@ body {
 h1 {
   text-align: center;
   font-size: 36px;
+  font-weight: 200;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+
+#input-container {
+  align-content: center;
+}
+input {
+  background: #fff;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
 }
 
 #bookmark-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
 
+#bookmark-form {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 200px;
+  width: 300px;
+}
 
+#button {
+  background: #eee;
+  color: #444;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
 
+#button:hover {
+  background: #ccc;
 }
 
 .bookmark {
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 100px;
   border: 1px solid #ccc;
   border-radius: 5px;
   color: #444;
@@ -54,6 +92,23 @@ h1 {
   text-align: center;
   margin: 10px;
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+li a:after {
+  display: block;
+  content: '';
+  border-bottom: 1px solid #696969;
+  transform: scaleX(0.0001);
+  transition: transform 250ms ease-in-out;
+}
+
+li a:hover:after {
+  color: #7B868A;
+  transform: scaleX(0.60);
 }
 
 a:hover {
@@ -72,5 +127,13 @@ a:hover {
 .delete-btn:hover {
   background: url('../assets/trash_hover.png');
   background-size: cover;
+}
 
+#bookmark-notification {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 200px;
 }

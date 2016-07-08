@@ -80,7 +80,7 @@
     const url = bookmark.url;
     tag.dataset.id = bookmark.id;
     tag.classList.add('bookmark');
-    tag.innerHTML = `<a href='${url}'>${title}</a>`;
+    tag.innerHTML = `<a href='${url}' target='_blank'>${title}</a>`;
     createDeleteBtn(tag);
     document.getElementById('bookmark-container').appendChild(tag);
   }

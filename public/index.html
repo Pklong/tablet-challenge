@@ -12,16 +12,22 @@
       <ul id="bookmark-container"></ul>
     </main>
     <form id="bookmark-form" action="" method="post">
-      <div>
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="bookmark_title" />
+      <div class="input-container">
+        <label for="title"></label>
+        <input type="text"
+               id="title"
+               placeholder="Title"
+               name="bookmark_title" />
       </div>
-      <div>
-        <label for="url">Url:</label>
-        <input type="url" id="url" name="bookmark_url" />
+      <div class="input-container">
+        <label for="url"></label>
+        <input type="url"
+               id="url"
+               placeholder="Url"
+               name="bookmark_url" />
       </div>
       <div class="button">
-        <button id="button" type="submit">Add New Bookmark!</button>
+        <button id="button" type="submit">New Bookmark</button>
       </div>
     </form>
     <footer>

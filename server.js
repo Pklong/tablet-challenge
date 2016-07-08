@@ -12,7 +12,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-let bookmarkCount = Object.keys(bookmarksFile).length;
+let bookmarkId;
+const bookmarkEntries = Object.keys(bookmarksFile);
+
+if (bookmarkEntries.length < 1) {
+  bookmarkId = 0;
+} else {
+  const lastBookmarkEntry = bookmarkEntries.pop();
+  bookmarkId = lastBookmarkEntry[lastBookmarkEntry.length - 1];
+}
 
 app.get('/bookmarks', (req, res) => {
   fs.readFile(bookmarksFileName, (err, data) => {
@@ -22,14 +30,14 @@ app.get('/bookmarks', (req, res) => {
 });
 
 app.post('/bookmarks', (req, res) => {
-  bookmarkCount++;
+  bookmarkId++;
   const newBookmark = {
     title: req.body.bookmark_title,
     url: req.body.bookmark_url,
-    id: bookmarkCount,
+    id: bookmarkId,
   };
 
-  bookmarksFile[`bookmark${bookmarkCount}`] = newBookmark;
+  bookmarksFile[`bookmark${bookmarkId}`] = newBookmark;
 
   const file = JSON.stringify(bookmarksFile, null, 2);
 

@@ -1,6 +1,8 @@
 #Tablet Coding challenge
 
-To view...
+To view:
+1. clone this repo
+2. cd into top directory
 
 ```
 npm install

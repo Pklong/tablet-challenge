@@ -13,5 +13,10 @@
     "title": "Google",
     "url": "https://www.google.com/",
     "id": 3
+  },
+  "bookmark25": {
+    "title": "Github",
+    "url": "https://github.com/",
+    "id": 25
   }
 }

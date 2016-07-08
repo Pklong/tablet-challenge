@@ -20,19 +20,9 @@
     request.send(requestParams.data);
   }
 
-  function createNewBookmarkNotification(bookmarkTitle) {
+  function newBookmarkNotification(action, bookmarkTitle) {
     const notification = document.getElementById('bookmark-notification');
-    notification.innerHTML = `Bookmark "${bookmarkTitle}" created`;
-
-    clearTimeout(this.clearNotificationTimeout);
-    this.clearNotificationTimeout = setTimeout(() => {
-      notification.innerHTML = '';
-    }, 3000);
-  }
-
-  function deleteBookmarkNotification(bookmarkTitle) {
-    const notification = document.getElementById('bookmark-notification');
-    notification.innerHTML = `Bookmark "${bookmarkTitle}" deleted`;
+    notification.innerHTML = `Bookmark "${bookmarkTitle}" ${action}`;
 
     clearTimeout(this.clearNotificationTimeout);
     this.clearNotificationTimeout = setTimeout(() => {
@@ -44,6 +34,7 @@
     const bookmark = document.querySelector(`[data-id="${bookmarkId}"]`);
     bookmark.parentNode.removeChild(bookmark);
   }
+
   function deleteBookmark(bookmarkId) {
     ajax({
       method: 'DELETE',
@@ -51,7 +42,7 @@
       success: (bookmark) => {
         const bm = JSON.parse(bookmark);
         removeBookmark(bm.id);
-        deleteBookmarkNotification(bm.title);
+        newBookmarkNotification('deleted', bm.title);
       },
       error: () => {
         console.error('Failure removing bookmark');
@@ -84,7 +75,6 @@
     createDeleteBtn(tag);
     document.getElementById('bookmark-container').appendChild(tag);
   }
-
 
   function populatePage(bookmarks) {
     Object.keys(bookmarks).forEach((bookmark) => {
@@ -123,7 +113,7 @@
         clearInputFields();
         const bookmark = JSON.parse(bm);
         addBookmark(bookmark);
-        createNewBookmarkNotification(bookmark.title);
+        newBookmarkNotification('created', bookmark.title);
       },
       error: () => {
         console.error('Failure adding bookmark');
@@ -140,7 +130,6 @@
 
       const title = form.querySelectorAll('input')[0].value;
       const url = form.querySelectorAll('input')[1].value;
-
       const newBookmark = {
         bookmark_title: title,
         bookmark_url: url,

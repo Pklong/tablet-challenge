@@ -1,12 +1,12 @@
-#Tablet Coding challenge
+#Tablet Coding Challenge
 
 To view:
-1. clone this repo
-2. cd into top directory
+* clone this repo
+* cd into top directory
 
 ```
 npm install
 npm start
 ```
 
-...and visit localhost:3000
+...visit localhost:3000

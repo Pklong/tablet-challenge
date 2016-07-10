@@ -26,8 +26,8 @@
     const notification = document.getElementById('bookmark-notification');
     notification.innerHTML = `Bookmark "${bookmarkTitle}" ${action}`;
 
-    clearTimeout(this.clearNotificationTimeout);
-    this.clearNotificationTimeout = setTimeout(() => {
+    clearTimeout(window.clearNotificationTimeout);
+    window.clearNotificationTimeout = setTimeout(() => {
       notification.innerHTML = '';
     }, 3000);
   }
@@ -136,8 +136,16 @@
         bookmark_title: title,
         bookmark_url: url,
       };
-      createNewBookmark(newBookmark);
+      if (isValidSubmission(newBookmark)) {
+        createNewBookmark(newBookmark);
+      } else {
+        newBookmarkNotification('required', 'Title / URL');
+      }
     });
+  }
+
+  function isValidSubmission(bookmark) {
+    return (bookmark.bookmark_title.length > 0 && bookmark.bookmark_url.length > 0)
   }
 
   function initialize() {

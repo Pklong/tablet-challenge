@@ -1,3 +1,5 @@
+'use strict';
+
 (() => {
   function ajax(options) {
     const request = new XMLHttpRequest();

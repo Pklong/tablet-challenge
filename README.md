@@ -8,5 +8,3 @@ To view:
 npm install
 npm start
 ```
-
-...visit localhost:3000

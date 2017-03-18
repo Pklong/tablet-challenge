@@ -1,10 +1,7 @@
-#Tablet Coding Challenge
+# Tablet Coding Challenge
 
-To view:
-* clone this repo
-* cd into top directory
-
-```
+```sh
+git clone https://github.com/Pklong/tablet-challenge.git
 npm install
 npm start
 ```
